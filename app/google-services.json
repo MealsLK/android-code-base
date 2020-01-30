@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "916196345868",
+    "firebase_url": "https://meals-f1216.firebaseio.com",
+    "project_id": "meals-f1216",
+    "storage_bucket": "meals-f1216.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:916196345868:android:ec33bed033fe2294024629",
+        "android_client_info": {
+          "package_name": "lk.dev.mealslk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "916196345868-4vq505un8a839g4upqkij53m5r4q36jh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "lk.dev.mealslk",
+            "certificate_hash": "929ec4cfee2b3ded08bdddb9861da7c3f40ff537"
+          }
+        },
+        {
+          "client_id": "916196345868-7g55r5q7n0qsia4bt4qrc15hdap3soj1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzOV56GvObAS7v2iw9jlDdu4jU1APpgwM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "916196345868-7g55r5q7n0qsia4bt4qrc15hdap3soj1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
