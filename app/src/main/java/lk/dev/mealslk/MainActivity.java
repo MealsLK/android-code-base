@@ -28,7 +28,7 @@
             favoriteItems.add(new ItemSquareModel(R.drawable.common_google_signin_btn_icon_dark_normal_background, "Title " + i));
             favoritesAdapter.notifyDataSetChanged();
         }
-
+//Helloooooooooooooo GIT
         ArrayList<ItemSquareModel> nearbyItems = new ArrayList<>();
         ItemSquareAdapter nearbyAdapter = new ItemSquareAdapter(this, nearbyItems);
         RecyclerView nearbyRecyclerView = findViewById(R.id.nearby_recycler_view);
