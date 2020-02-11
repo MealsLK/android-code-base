@@ -1,44 +1,55 @@
-    package lk.dev.mealslk;
+package lk.dev.mealslk;
 
-    import android.os.Bundle;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 
-    import androidx.appcompat.app.AppCompatActivity;
-    import androidx.recyclerview.widget.LinearLayoutManager;
-    import androidx.recyclerview.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.fragment.app.Fragment;
 
-    import java.util.ArrayList;
 
-    import lk.dev.mealslk.adapters.ItemSquareAdapter;
-    import lk.dev.mealslk.models.ItemSquareModel;
 
-    public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
+
+    BottomNavigationView bottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<ItemSquareModel> favoriteItems = new ArrayList<>();
-        ItemSquareAdapter favoritesAdapter = new ItemSquareAdapter(this, favoriteItems);
-        RecyclerView favoritesRecyclerView = findViewById(R.id.favorites_recycler_view);
-
-        favoritesRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        favoritesRecyclerView.setAdapter(favoritesAdapter);
-        for (int i = 0; i < 10; i++) {
-            favoriteItems.add(new ItemSquareModel(R.drawable.common_google_signin_btn_icon_dark_normal_background, "Title " + i));
-            favoritesAdapter.notifyDataSetChanged();
-        }
-//Helloooooooooooooo GIT
-        ArrayList<ItemSquareModel> nearbyItems = new ArrayList<>();
-        ItemSquareAdapter nearbyAdapter = new ItemSquareAdapter(this, nearbyItems);
-        RecyclerView nearbyRecyclerView = findViewById(R.id.nearby_recycler_view);
-
-        nearbyRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        nearbyRecyclerView.setAdapter(nearbyAdapter);
-        for (int i = 0; i < 10; i++) {
-            nearbyItems.add(new ItemSquareModel(R.drawable.common_google_signin_btn_icon_dark_normal_background, "Title " + i));
-            nearbyAdapter.notifyDataSetChanged();
-        }
-
+        bottomNavigation = findViewById(R.id.bottom_navigation);
+        bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
+        openFragment(HomeFragment.newInstance("", ""));
     }
+
+    public void openFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
+        new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        openFragment(HomeFragment.newInstance("", ""));
+                        return true;
+                    case R.id.navigation_sms:
+                        openFragment(SearchFragment.newInstance("", ""));
+                        return true;
+//                        case R.id.navigation_notifications:
+//                            openFragment(NotificationFragment.newInstance("", ""));
+//                            return true;
+                }
+                return false;
+            }
+        };
+
 }
